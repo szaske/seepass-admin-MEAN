@@ -1,0 +1,12 @@
+<div *ngFor="let poi of pois">
+
+  <div class="poi-container">
+    <div class="row expanded">
+      <div class="small-12 medium-5 medium-offset-1 columns">
+        <a routerLink="/pois/{{ poi._id }}">{{ poi.name }}</a>
+      </div>
+      <div>
+        <p>{{ poi.description | slice: 0:330 }}</p>
+      </div>
+    </div>
+  </div>
