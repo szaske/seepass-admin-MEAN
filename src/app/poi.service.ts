@@ -20,4 +20,9 @@ export class PoiService {
     return this._http.get('/api/all')
       .map(response => this.result = response.json());
   }
+
+  getPoi(id){
+    return this._http.get("/api/pois/"+id)
+      .map(response => this.result = response.json());
+  }
 } // end of PoiService

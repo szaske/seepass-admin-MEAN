@@ -9,12 +9,14 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
 import { PoiService } from './poi.service';
+import { PoiComponent } from './poi/poi.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    PoiComponent
   ],
   imports: [
     BrowserModule,

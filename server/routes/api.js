@@ -15,6 +15,8 @@ mongoose.connect(db, function(err) {
   }
 });
 
+// All route
+//
 router.get('/all', function(req, res) {
 
   poi.find({})
@@ -27,5 +29,20 @@ router.get('/all', function(req, res) {
       }
     })
 })
+
+// Individual POI route
+//
+router.get('/pois/:id', function(req, res) {
+  console.log('requesting a specific article');
+  poi.findById(req.params.id)
+    .exec(function(err, poi) {
+      if (err) {
+        console.log('Oops, error getting the specific POI');
+      } else {
+        res.json(poi)
+      }
+    })
+})
+
 
 module.exports = router;
