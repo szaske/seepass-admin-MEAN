@@ -44,5 +44,46 @@ router.get('/pois/:id', function(req, res) {
     })
 })
 
+// Creating a POI route
+//
+router.post('/create', function(req, res) {
+  console.log('Posting(creating) a POI')
+  var newPOI = new poi(); // creating a new MongoDB model, not Poi class
+  newPOI.name = req.body.name;
+  newPOI.description = req.body.description;
+  newPOI.latitude = req.body.latitude;
+  newPOI.longitude = req.body.longitude;
+  newPOI.tags = req.body.tags;
+  newPOI.save(function(err, poi) {
+    if (err) {
+      console.log('Error inserting the POI');
+    } else {
+      // A response is needed, or the subscription will not be filled.
+      res.json(poi);
+    }
+  })
+
+
+})
+
+// Update a POI route
+//
+router.post('/update/:id', function(req, res) {
+  console.log('Updating a POI');
+
+  poi.findById(req.params.id)
+    .exec(function(err, poi) {
+      if (err) {
+        console.log('Could not find the POI in the DB')
+      } else {
+        poi.name = req.body.name;
+        poi.description = req.body.description;
+        poi.save();
+        res.json(poi); // ??
+      }
+    });
+})
+
+
 
 module.exports = router;

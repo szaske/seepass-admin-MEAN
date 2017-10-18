@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PoiComponent } from './poi/poi.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'pois/:id',
     component: PoiComponent
+  },
+  {
+    path: 'create',
+    component: CreateComponent
   }
 ];
 

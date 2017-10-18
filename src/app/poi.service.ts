@@ -7,6 +7,8 @@ import { Http, Headers, RequestOptions } from '@angular/http'
 // used on all of our API calls
 import 'rxjs/add/operator/map';
 
+import { Poi } from './poi';
+
 
 @Injectable()
 export class PoiService {
@@ -23,6 +25,14 @@ export class PoiService {
 
   getPoi(id){
     return this._http.get("/api/pois/"+id)
+      .map(response => this.result = response.json());
+  }
+
+  insertPoi(post: Poi) {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers});
+
+    return this._http.post('/api/create', JSON.stringify(post), options)
       .map(response => this.result = response.json());
   }
 } // end of PoiService

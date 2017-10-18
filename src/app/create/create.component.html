@@ -1,0 +1,38 @@
+<div class="poi-container">
+  <form [formGroup]="poiForm" (ngSubmit)="addPoi(poiForm.value)" *ngIf="poiForm">
+    <div class="row expanded">
+      <div class="small-12 columns">
+        <label>poi name
+            <input type="text" name="name" [formControl]="poiForm.controls['name']" formControlName="name">
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['name'].valid && poiForm.controls['name'].touched">
+          You must specify a name that's at least 10 characters long
+        </div>
+
+        <label>Description
+            <textarea name="description" id="description" required [formControl]="poiForm.controls['description']" formControlName="description"></textarea>
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['description'].valid && poiForm.controls['description'].touched">
+          You must specify description that's at least 10 characters long
+        </div>
+
+        <label>Longitude
+            <input type="text" name="longitude" [formControl]="poiForm.controls['longitude']" formControlName="longitude">
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['longitude'].valid && poiForm.controls['longitude'].touched">
+          You must specify a valid Seattle longitude
+        </div>
+
+        <label>Tags
+            <input type="text" name="tags" [formControl]="poiForm.controls['tags']" formControlName="tags">
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['tags'].valid && poiForm.controls['tags'].touched">
+          You must specify a valid Seattle tags
+        </div>
+
+        <input type="submit" class="cta-btn filled" value="Post poi" [disabled]="!poiForm.valid">
+
+      </div>
+    </div>
+  </form>
+</div>
