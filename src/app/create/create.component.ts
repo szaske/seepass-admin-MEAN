@@ -18,10 +18,14 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
 
+    // longitude validator = Validators.pattern('^(?:-122\.)+\d{1,6}')
+    // should work but doesn't...need to debug 
     this.poiForm = this.fb.group({
       'name' : [null,Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(40)])],
       'description' : [null,Validators.compose([Validators.required, Validators.minLength(5)])],
       'longitude' : [null, Validators.compose([Validators.required]) ],
+      'latitude' : [null, Validators.compose([Validators.required]) ],
+      'img_url' : [null, Validators.compose([Validators.required]) ],
       'tags' : [null, Validators.compose([Validators.required]) ]
     });
   }

@@ -1,12 +1,24 @@
-<div *ngFor="let poi of pois">
+<table class="table-expand">
+  <thead>
+    <tr class="table-expand-row">
+      <th width="200">Name</th>
+      <th class="text-right" width="150">Long</th>
+      <th class="text-right" width="150">Lat</th>
+      <th width="150">Tags</th>
+      <th>Desc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-poi [ngForOf]="pois">
+      <tr class="table-expand-row" data-open-details>
+        <td><a routerLink="/pois/{{ poi._id }}">{{ poi.name }}</a></td>
+        <td class="text-right">{{poi.longitude}}</td>
+        <td class="text-right">{{poi.latitude}}</td>
+        <td>{{poi.tags}}</td>
+        <td>{{ poi.description | slice: 0:50 }}</td>
+      </tr>
+    </ng-template>
 
-  <div class="poi-container">
-    <div class="row expanded">
-      <div class="small-12 medium-5 medium-offset-1 columns">
-        <a routerLink="/pois/{{ poi._id }}">{{ poi.name }}</a>
-      </div>
-      <div>
-        <p>{{ poi.description | slice: 0:330 }}</p>
-      </div>
-    </div>
-  </div>
+
+  </tbody>
+</table>

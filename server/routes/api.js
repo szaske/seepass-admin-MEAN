@@ -79,7 +79,7 @@ router.post('/update/:id', function(req, res) {
         poi.name = req.body.name;
         poi.description = req.body.description;
         poi.save();
-        res.json(poi); // ??
+        res.json(poi); // the response
       }
     });
 })

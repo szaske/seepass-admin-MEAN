@@ -23,6 +23,20 @@
           You must specify a valid Seattle longitude
         </div>
 
+        <label>Latitude
+            <input type="text" name="latitude" [formControl]="poiForm.controls['latitude']" formControlName="latitude">
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['latitude'].valid && poiForm.controls['latitude'].touched">
+          You must specify a valid Seattle latitude
+        </div>
+
+        <label>Image URL
+            <input type="text" name="img_url" [formControl]="poiForm.controls['img_url']" formControlName="img_url">
+          </label>
+        <div class="alert" *ngIf="!poiForm.controls['img_url'].valid && poiForm.controls['img_url'].touched">
+          You must specify a valid Seattle img_url
+        </div>
+
         <label>Tags
             <input type="text" name="tags" [formControl]="poiForm.controls['tags']" formControlName="tags">
           </label>
